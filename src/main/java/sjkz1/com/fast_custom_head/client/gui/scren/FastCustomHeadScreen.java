@@ -13,7 +13,6 @@ import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.level.block.entity.SkullBlockEntity;
-import net.minecraft.world.level.block.state.BlockState;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.UUID;
@@ -22,15 +21,13 @@ import java.util.UUID;
 public class FastCustomHeadScreen extends Screen {
 
     private final SkullBlockEntity skullBlockEntity;
-    private final BlockState blockState;
     protected EditBox input;
 
     private String initName;
 
-    public FastCustomHeadScreen(SkullBlockEntity skullBlockEntity, BlockState blockState) {
+    public FastCustomHeadScreen(SkullBlockEntity skullBlockEntity) {
         super(Component.literal("Fast CustomHead"));
         this.skullBlockEntity = skullBlockEntity;
-        this.blockState = blockState;
     }
 
     @Override

@@ -16,7 +16,7 @@ public class FastCustomHead implements ModInitializer {
         UseBlockCallback.EVENT.register((player, world, hand, hitResult) -> {
             assert world != null;
             if ((world.getBlockState(hitResult.getBlockPos()).is(Blocks.PLAYER_HEAD) || (world.getBlockState(hitResult.getBlockPos()).is(Blocks.PLAYER_WALL_HEAD))) && player.getItemInHand(hand).getItem() instanceof DyeItem) {
-                Minecraft.getInstance().setScreen(new FastCustomHeadScreen((SkullBlockEntity) world.getBlockEntity(hitResult.getBlockPos()), world.getBlockState(hitResult.getBlockPos())));
+                Minecraft.getInstance().setScreen(new FastCustomHeadScreen((SkullBlockEntity) world.getBlockEntity(hitResult.getBlockPos())));
                 return InteractionResult.SUCCESS;
             }
             return InteractionResult.PASS;
