@@ -3,7 +3,7 @@
   "id": "fast_custom_head",
   "version": "${version}",
   "name": "Fast Custom Head",
-  "description": "1.Copy player name(SkullOwner) to clipboard.\n\n2.Shift Right Click with Dye item to player head.",
+  "description": "Faster way to get custom head!",
   "authors": [
     "SJKZ1"
   ],
