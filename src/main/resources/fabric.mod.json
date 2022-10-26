@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "id": "fast_custom_head",
+  "version": "${version}",
+  "name": "Fast Custom Head",
+  "description": "1.Copy player name(SkullOwner) to clipboard.\n\n2.Shift Right Click with Dye item to player head.",
+  "authors": [
+    "SJKZ1"
+  ],
+  "contact": {},
+  "license": "MIT",
+  "icon": "assets/fast_custom_head/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "client": [
+      "sjkz1.com.fast_custom_head.client.Fast_custom_headClient"
+    ],
+    "main": [
+      "sjkz1.com.fast_custom_head.FastCustomHead"
+    ]
+  },
+  "mixins": [
+    "fast_custom_head.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.14.10",
+    "fabric": "*",
+    "minecraft": "1.19.2"
+  }
+}
