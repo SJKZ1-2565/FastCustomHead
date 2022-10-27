@@ -48,6 +48,7 @@ public class FastCustomHeadScreen extends Screen {
                 gameProfile.getProperties().put("textures", new Property("Value", string));
                 skullBlockEntity.setOwner(gameProfile);
                 skullBlockEntity.setChanged();
+                //TODO Make auto re join
             }
         });
         this.addWidget(this.input);
