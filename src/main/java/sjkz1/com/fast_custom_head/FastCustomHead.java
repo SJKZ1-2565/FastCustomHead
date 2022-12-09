@@ -1,8 +1,6 @@
 package sjkz1.com.fast_custom_head;
 
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.client.networking.v1.ClientPlayConnectionEvents;
-import net.fabricmc.fabric.api.client.networking.v1.ClientPlayConnectionEvents;
 import net.fabricmc.fabric.api.event.player.UseBlockCallback;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.InteractionResult;
@@ -21,9 +19,6 @@ public class FastCustomHead implements ModInitializer {
                 return InteractionResult.SUCCESS;
             }
             return InteractionResult.PASS;
-        });
-        ClientPlayConnectionEvents.DISCONNECT.register((handler, client) -> {
-
         });
     }
 }
