@@ -6,7 +6,6 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.ChatFormatting;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.client.gui.screens.Screen;
@@ -33,11 +32,9 @@ public class FastCustomHeadScreen extends Screen {
     @Override
     protected void init() {
         assert this.minecraft != null;
-        this.minecraft.keyboardHandler.setSendRepeatsToGui(true);
-        this.addRenderableWidget(new Button(this.width / 2 - 100, this.height / 4 + 120, 200, 20, CommonComponents.GUI_DONE, button -> {
+        this.addRenderableWidget(Button.builder(CommonComponents.GUI_DONE, button -> {
             this.onClose();
-            Minecraft.getInstance().gui.getChat().addMessage(Component.literal("Rejoin world!").withStyle(ChatFormatting.RED));
-        }));
+        }).bounds(this.width / 2 - 100, this.height / 4 + 120, 200, 20).build());
         this.input = new EditBox(this.font, this.width / 2 - 100, 60, 200, 20, Component.literal("Skull Owner"));
         this.input.setValue(this.initName);
         this.input.setMaxLength(32500);
@@ -46,9 +43,8 @@ public class FastCustomHeadScreen extends Screen {
             if (!StringUtils.isBlank(string)) {
                 GameProfile gameProfile = new GameProfile(UUID.randomUUID(), null);
                 gameProfile.getProperties().put("textures", new Property("Value", string));
-                skullBlockEntity.setOwner(gameProfile);
-                skullBlockEntity.setChanged();
-                //TODO Make auto re join
+                this.skullBlockEntity.setOwner(gameProfile);
+                this.skullBlockEntity.setChanged();
             }
         });
         this.addWidget(this.input);
@@ -61,5 +57,16 @@ public class FastCustomHeadScreen extends Screen {
         FastCustomHeadScreen.drawCenteredString(poseStack, this.font, this.title, this.width / 2, 40, 0xFFFFFF);
         this.input.render(poseStack, i, j, f);
         super.render(poseStack, i, j, f);
+    }
+
+    @Override
+    public void onClose() {
+        super.onClose();
+        this.minecraft.gui.getChat().addMessage(Component.literal("Rejoin world!").withStyle(ChatFormatting.RED));
+    }
+
+    @Override
+    public boolean isPauseScreen() {
+        return false;
     }
 }
